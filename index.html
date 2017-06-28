@@ -1,0 +1,434 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Puzzle</title>
+  <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lobster', cursive;
+  } 
+
+ .header {
+    width: auto;
+    height: 70px;
+    font-size: 35px;
+    line-height: 70px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    background-color: #FFC107;
+    font-family: 'Lobster', cursive;
+}
+
+  .main {
+    width: auto;
+    height: 537px;
+  }
+
+  .footer {
+    width: auto;
+    height: 55px;
+    font-size: 27px;
+    color: white;
+    background-color: #FFC107;
+    text-align: center;
+    line-height: 2;
+  }
+
+  .footer-frase {
+    width: 470px;
+    height: 55px;
+    font-size: 27px;
+    color: white;
+    text-align: center;
+    line-height: 2;
+    /*background-color: red;*/
+    position: absolute;
+    left: 34%;
+  }
+
+  .table {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 120px;
+    left: 480px;
+    /*background-color: yellow;*/
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0;
+  }
+
+  .puzzle {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+  }
+
+  .rotate-0 {
+    transform: rotate(0deg);
+  }
+
+  .rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .rotate-270 {
+    transform: rotate(270deg);
+  }
+
+  .saturate {
+    filter: saturate(3.5);
+  }
+
+  .fa-angle-left {
+    position: absolute;
+    color: #FFE082;
+    top: 285px;
+    left: 379px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .fa-angle-right {
+    position: absolute;
+    color: #FFE082;
+    top: 285px;
+    right: 379px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .fa:hover {
+    color: #FFC107;
+    opacity: 1;
+  }
+
+  /*.summer .header,
+  .summer .footer {
+    background-color: #FFC107;
+  }
+
+  .autumn .header,
+  .autumn .footer {
+    background-color: #625308;
+  }
+
+  .winter .header,
+  .winter .footer {
+    background-color: #2579bb;
+  }
+
+  .spring .header,
+  .spring .footer {
+    background-color: #83af4d;
+  }
+
+  .summer .fa {
+    color: #FFC107;
+  }
+
+  .autumn .fa {
+    color: #625308;
+  }
+
+  .winter .fa {
+    color: #2579bb;
+  }
+
+  .spring .fa {
+    color: #83af4d;
+  }/*
+
+  </style>
+
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  
+
+  </head>
+
+  <body>
+    <div class="header">Собери весёлое солнышко!</div>
+    <div class="main">
+    <i class="fa fa-angle-left fa-5x"></i>
+      <table class="table">
+        <tr>
+          <td class="puzzle"><img src="./img/sun_2_01.png" class="puzzle-image" data-element-row-index="0" data-element-col-index="0"></td>
+          <td class="puzzle"><img src="./img/sun_2_02.png" class="puzzle-image" data-element-row-index="0" data-element-col-index="1"></td>
+        </tr>
+        <tr>
+          <td class="puzzle"><img src="./img/sun_2_03.png" class="puzzle-image" data-element-row-index="1" data-element-col-index="0"></td>
+          <td class="puzzle"><img src="./img/sun_2_04.png" class="puzzle-image" data-element-row-index="1" data-element-col-index="1"></td>
+        </tr>
+      </table>
+    <i class="fa fa-angle-right fa-5x"></i>
+
+
+    </div>
+    <div class="footer"><div class="footer-frase">У тебя получится!</div></div>
+  </body>
+  </html>
+
+  <script type="text/javascript">
+
+  var pictureSun = [
+    [
+      {
+        "img-src": "./img/sun_2_01.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/sun_2_02.png",
+        "rotate": 0,
+      }
+    ],
+    [
+      {
+        "img-src": "./img/sun_2_03.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/sun_2_04.png",
+        "rotate": 0,
+      }
+    ],
+  ]
+  var pictureUmbrella = [
+    [
+      {
+        "img-src": "./img/umbrella_2_01.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/umbrella_2_02.png",
+        "rotate": 0,
+      }
+    ],
+    [
+      {
+        "img-src": "./img/umbrella_2_03.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/umbrella_2_04.png",
+        "rotate": 0,
+      }
+    ],
+  ]
+
+  var pictureSnow = [
+    [
+      {
+        "img-src": "./img/snow_2_01.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/snow_2_02.png",
+        "rotate": 0,
+      }
+    ],
+    [
+      {
+        "img-src": "./img/snow_2_03.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/snow_2_04.png",
+        "rotate": 0,
+      }
+    ],
+  ]
+
+  var pictureFlower = [
+    [
+      {
+        "img-src": "./img/flower_2_01.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/flower_2_02.png",
+        "rotate": 0,
+      }
+    ],
+    [
+      {
+        "img-src": "./img/flower_2_03.png",
+        "rotate": 0,
+      },
+      {
+        "img-src": "./img/flower_2_04.png",
+        "rotate": 0,
+      }
+    ],
+  ]
+
+  var activePictureIndex = 0;
+  var listPicture = [pictureSun, pictureUmbrella, pictureSnow, pictureFlower];
+  var listPictureText = ["Собери весёлое солнышко!", "Собери волшебный зонтик!", "Собери кружевную снежинку!", "Cобери красивый цветочек"];
+  var listPictureTheme = ["summer", "autumn", "winter", "spring"];
+  var listRowListPuzzle = listPicture[activePictureIndex];
+  var pictureText = listPictureText[activePictureIndex];
+  var pictureTheme = listPictureTheme[activePictureIndex];
+
+  var listElementRow = document.querySelectorAll("table tr");
+  var frase = document.querySelector(".footer-frase");
+  var prevArrow = document.querySelector(".fa-angle-left");
+  var nextArrow = document.querySelector(".fa-angle-right");
+  var elementHeader = document.querySelector(".header");
+  var elementBody = document.querySelector("body");
+
+  var listRowListElementPuzzle = [];
+  for (var i = 0; i < listElementRow.length; i++) {
+    listRowListElementPuzzle[i] = listElementRow[i].querySelectorAll(":scope .puzzle");
+  }
+  var listRowListElementPuzzleImg = [];
+  for (var i = 0; i < listElementRow.length; i++) {
+    listRowListElementPuzzleImg[i] = listElementRow[i].querySelectorAll(":scope .puzzle-image")
+  }
+
+  shufflePuzzle();
+
+  function redrawPuzzle (rowIndex, colIndex) {
+    var puzzle = listRowListPuzzle[rowIndex][colIndex];
+    var elementPuzzleImg = listRowListElementPuzzleImg[rowIndex][colIndex];
+    elementPuzzleImg.classList.remove("rotate-0");
+    elementPuzzleImg.classList.remove("rotate-90");
+    elementPuzzleImg.classList.remove("rotate-180");
+    elementPuzzleImg.classList.remove("rotate-270");
+    elementPuzzleImg.classList.add("rotate-"+puzzle["rotate"]);
+    elementPuzzleImg.src = puzzle["img-src"]
+  }
+
+  for (var i = 0; i < listRowListElementPuzzleImg.length; i++) {
+    for (var j = 0; j < listRowListElementPuzzleImg[i].length; j++) {
+    listRowListElementPuzzleImg[i][j].onclick = onclickPuzzleImg;
+  }
+} 
+
+function onclickPuzzleImg(event) {
+  var currentRowIndex = event.currentTarget.dataset["elementRowIndex"];
+  var currentColIndex = event.currentTarget.dataset["elementColIndex"];
+  var puzzle = listRowListPuzzle[currentRowIndex][currentColIndex];
+  puzzle["rotate"]+=90;
+    if (puzzle["rotate"] == 360) {
+      puzzle["rotate"] = 0;
+    }
+  redrawPuzzle(currentRowIndex, currentColIndex);
+  checkPuzzle();
+}
+
+function shufflePuzzle () {
+  for (var i = 0; i < listRowListPuzzle.length; i++) {
+      for (var j = 0; j < listRowListPuzzle[i].length; j++) {
+      listRowListPuzzle[i][j].rotate = getRandomRotate();
+      redrawPuzzle(i, j);
+    }
+  } 
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomRotate() {
+  var listRandomRotate = [0, 90, 180, 270];
+  var randomIndex = getRandomInt(1, 3);
+  return listRandomRotate[randomIndex];
+}
+
+function getIsWin () {
+  for (var i = 0; i < listRowListPuzzle.length; i++) {
+      for (var j = 0; j < listRowListPuzzle[i].length; j++) {
+      if (listRowListPuzzle[i][j].rotate !== 0) {
+        return false;
+      }
+    }
+  } 
+  return true;
+} 
+
+function checkPuzzle() {
+  var isWin = getIsWin();
+  redrawIsWin(isWin);
+}
+
+function redrawIsWin(isWin) {
+  for (var i = 0; i < listRowListElementPuzzleImg.length; i++) {
+    for (var j = 0; j < listRowListElementPuzzleImg[i].length; j++) {
+      var elementPuzzleImg = listRowListElementPuzzleImg[i][j];
+      if (isWin) {
+        elementPuzzleImg.classList.add("saturate")
+      }
+      else {
+        elementPuzzleImg.classList.remove("saturate")
+      }
+    }
+}
+  if (isWin) {
+    frase.innerText = frase.innerText.replace("У тебя получится!", "Молодец!")
+  }
+  else {
+    frase.innerText = frase.innerText.replace("Молодец!", "У тебя получится!")
+  }
+}
+
+prevArrow.onclick = onclickPrevArrow;
+nextArrow.onclick = onclickNextArrow;
+
+function redrawPicture() {
+  shufflePuzzle();
+  for (var i = 0; i < listRowListElementPuzzle.length; i++) {
+    for (var j = 0; j < listRowListElementPuzzle[i].length; j++) {
+      redrawPuzzle(i, j);
+    }
+  }
+  checkPuzzle();
+}
+
+function redrawPictureText () {
+  elementHeader.innerText = pictureText;
+}
+
+function redrawPictureTheme() {
+  for (var i = 0; i < listPictureTheme.length; i++) {
+    elementBody.classList.remove(listPictureTheme[i]);
+  }
+  elementBody.classList.add(pictureTheme);
+}
+
+function onclickPrevArrow () {
+  activePictureIndex -= 1;
+  if (activePictureIndex < 0) {
+    activePictureIndex = listPicture.length;
+  }
+  listRowListPuzzle = listPicture[activePictureIndex];
+  pictureText = listPictureText[activePictureIndex];
+  pictureTheme = listPictureTheme[activePictureIndex];
+  redrawPicture();
+  redrawPictureText();
+  redrawPictureTheme();
+}
+
+function onclickNextArrow () {
+  activePictureIndex += 1;
+  if (activePictureIndex > listPicture.length) {
+    activePictureIndex = 0;
+  }
+  listRowListPuzzle = listPicture[activePictureIndex];
+  pictureText = listPictureText[activePictureIndex];
+  pictureTheme = listPictureTheme[activePictureIndex];
+  redrawPicture();
+  redrawPictureText();
+  redrawPictureTheme();
+}
+
+
+  </script>
